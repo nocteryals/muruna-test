@@ -12,7 +12,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "muruna",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -99,6 +99,42 @@
           }
         }
       }
+    },
+    "shared-resources": {
+      "projectType": "library",
+      "root": "projects/shared-resources",
+      "sourceRoot": "projects/shared-resources/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/shared-resources/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/shared-resources/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/shared-resources/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/shared-resources/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
     }
+  },
+  "cli": {
+    "analytics": "9a506709-f510-4afe-b279-cb34c42e30b7"
   }
 }
