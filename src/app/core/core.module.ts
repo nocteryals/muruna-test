@@ -4,16 +4,21 @@ import { CommonModule } from '@angular/common';
 import { CoreRoutingModule } from './core-routing.module';
 import { StartingComponent } from './starting/starting.component';
 import { MainComponent } from './main/main.component';
-
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
-  declarations: [
-    StartingComponent,
-    MainComponent
-  ],
+  declarations: [StartingComponent, MainComponent],
   imports: [
     CommonModule,
-    CoreRoutingModule
-  ]
+    CoreRoutingModule,
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    TranslateModule,
+  ],
 })
-export class CoreModule { }
+export class CoreModule {}
