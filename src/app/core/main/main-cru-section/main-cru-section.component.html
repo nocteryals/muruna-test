@@ -1,1 +1,29 @@
-<p>main-cru-section works!</p>
+<section id="cru-section" class="main-page__cru-section">
+  <button
+    class="main-page__cru-section__cancel-process"
+    mat-stroked-button
+    color="primary"
+    (click)="cancelProcess()"
+  >
+    {{ "core.cru.buttons.cancelButtonText" | translate }}
+  </button>
+  <form id="main-page__cru-section__form" [formGroup]="movieForm">
+    <mat-form-field>
+      <mat-label>{{ "core.cru.title" | translate }}</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ "core.cru.popularity" | translate }}</mat-label>
+      <input matInput formControlName="popularity" type="number" />
+    </mat-form-field>
+  </form>
+  <button
+    class="main-page__cru-section__save-movie"
+    mat-stroked-button
+    color="primary"
+    (click)="saveMovie()"
+    [disabled]="!movieForm.valid"
+  >
+    {{ "core.cru.buttons.saveButtonText" | translate }}
+  </button>
+</section>

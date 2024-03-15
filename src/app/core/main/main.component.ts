@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService, StorageService } from '@muruna-app/services';
 import { LANGUAGES, Movie, TableEmitter } from '@muruna-app/shared';
 import { TranslateService } from '@ngx-translate/core';
+import { CRUEmission } from 'libs/shared/src/lib/interfaces/cru-emission.interface';
 import { take, tap } from 'rxjs';
 
 @Component({
@@ -12,6 +13,8 @@ import { take, tap } from 'rxjs';
 export class MainComponent implements OnInit {
   public dataSource: Movie[];
   public isLoading: boolean;
+  public showCruComponent: boolean;
+  public currentMovieTo?: Movie;
 
   constructor(
     private httpService: HttpService,
@@ -20,6 +23,7 @@ export class MainComponent implements OnInit {
   ) {
     this.dataSource = [];
     this.isLoading = true;
+    this.showCruComponent = false;
   }
 
   async ngOnInit(): Promise<void> {
@@ -33,6 +37,8 @@ export class MainComponent implements OnInit {
 
   public async syncWithService(): Promise<void> {
     this.isLoading = true;
+    this.currentMovieTo = undefined;
+    this.showCruComponent = false;
     await this.httpService.syncMoviesAndSendToLocalStorage();
     setTimeout(async () => {
       this.dataSource = this.storageService.getFullMovies();
@@ -51,10 +57,33 @@ export class MainComponent implements OnInit {
       this.storageService.removeMovie(newTableEmission.movieTo.id);
       this.loadMoviesFromStorage();
     } else {
+      this.currentMovieTo = newTableEmission.movieTo;
+      this.showCruComponent = true;
     }
   }
 
   public createNewMovie(): void {
-    console.log('Start creation process');
+    this.currentMovieTo = undefined;
+    this.showCruComponent = true;
+  }
+
+  public cancelCRUProcess(): void {
+    this.showCruComponent = false;
+  }
+
+  public processCRUEmission(newCRUEmission: CRUEmission): void {
+    if (newCRUEmission.typeOfAction === 'update') {
+      this.storageService.updateMovie(newCRUEmission.movieTo);
+      setTimeout(() => {
+        this.loadMoviesFromStorage();
+      }, 1000);
+    } else {
+      this.storageService.saveMovie(newCRUEmission.movieTo);
+      setTimeout(() => {
+        this.loadMoviesFromStorage();
+      }, 1000);
+    }
+    this.currentMovieTo = undefined;
+    this.showCruComponent = false;
   }
 }

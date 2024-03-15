@@ -5,4 +5,4 @@ export * from './lib/interfaces/movie.interface';
 export * from './lib/interfaces/api-response.interface';
 export * from './lib/enums/movie-apis.enum';
 export * from './lib/enums/languages.enum';
-export * from './lib/interfaces/table-emittion.interface';
+export * from './lib/interfaces/table-emission.interface';

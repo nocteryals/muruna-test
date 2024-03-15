@@ -15,6 +15,7 @@ import { MainTableSectionComponent } from './main/main-table-section/main-table-
 import { MainCruSectionComponent } from './main/main-cru-section/main-cru-section.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MatIconModule } from '@angular/material/icon';
     ServicesModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    MatInputModule,
   ],
 })
 export class CoreModule {}

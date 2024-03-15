@@ -31,4 +31,10 @@
     (eventEmitter)="processTableEmission($event)"
   ></muruna-main-table-section>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <muruna-main-cru-section
+    *ngIf="showCruComponent"
+    (cancelEmitter)="cancelCRUProcess()"
+    (eventEmitter)="processCRUEmission($event)"
+    [movieTo]="currentMovieTo"
+  ></muruna-main-cru-section>
 </section>
