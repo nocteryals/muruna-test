@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { CORE_ROUTING } from '@muruna-app/shared';
 
 @Component({
   selector: 'muruna-starting',
   templateUrl: './starting.component.html',
   styleUrls: ['./starting.component.scss'],
 })
-export class StartingComponent implements OnInit {
-  constructor(private translate: TranslateService) {}
+export class StartingComponent {
+  constructor(
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.translate.use('es');
-    }, 4000);
+  public navigateToMainPage(): void {
+    this.router.navigate([CORE_ROUTING.DEFAULT + '/' + CORE_ROUTING.MAIN_PAGE]);
   }
 }

@@ -2,7 +2,10 @@
   "name": "muruna-test",
   "version": "0.0.0",
   "scripts": {
-    "start": "ng serve"
+    "start": "ng serve",
+    "start-prod": "ng serve -c production",
+    "build": "ng build",
+    "build-prod": "ng build -c production"
   },
   "private": true,
   "dependencies": {

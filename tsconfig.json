@@ -17,7 +17,9 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "paths": {
-      "@muruna-app/shared": ["libs/shared/src/public-api.ts"]
+      "@muruna-app/shared": ["libs/shared/src/public-api.ts"],
+      "@muruna-app/services": ["libs/services/src/public-api.ts"],
+      "@muruna-app/environments": ["src/environments/environment.ts"],
     },
     "target": "ES2022",
     "module": "ES2022",

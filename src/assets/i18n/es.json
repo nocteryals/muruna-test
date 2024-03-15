@@ -2,5 +2,12 @@
   "starting": {
     "title": "Bienvenido a la app de Muruna",
     "buttonText": "Iniciar"
+  },
+  "core": {
+    "table": {
+      "nameOfColumn1": "No.",
+      "nameOfColumn2": "Titulo",
+      "nameOfColumn3": "Popularidad"
+    }
   }
 }
