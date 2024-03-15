@@ -6,7 +6,8 @@
   "core": {
     "buttons": {
       "syncData": "Sync data",
-      "changeLanguage": "Change language"
+      "changeLanguage": "Change language",
+      "addNew": "Add new"
     },
     "table": {
       "nameOfColumn1": "No.",

@@ -23,8 +23,8 @@
         "core.table.nameOfColumn4" | translate
       }}</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <mat-icon>edit</mat-icon>
-        <mat-icon>delete</mat-icon>
+        <mat-icon (click)="emitUserAction(element, 'update')">edit</mat-icon>
+        <mat-icon (click)="emitUserAction(element, 'delete')">delete</mat-icon>
       </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

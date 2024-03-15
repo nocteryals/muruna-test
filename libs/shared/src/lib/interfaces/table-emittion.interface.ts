@@ -1,6 +1,6 @@
 import { Movie } from './movie.interface';
 
 export interface TableEmitter {
-  movieToUpdateOrDelete: Movie;
-  typeOfUpdate: 'delete' | 'update';
+  movieTo: Movie;
+  typeOfAction: 'delete' | 'update';
 }

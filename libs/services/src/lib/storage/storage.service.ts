@@ -38,4 +38,13 @@ export class StorageService {
       return [];
     }
   }
+
+  public removeMovie(idToDelete: number) {
+    const movies = localStorage.getItem(STORAGE_KEYS.MOVIES_KEY);
+    let parsedMovies = (movies !== null ? JSON.parse(movies) : []) as Movie[];
+    localStorage.setItem(
+      STORAGE_KEYS.MOVIES_KEY,
+      JSON.stringify(parsedMovies.filter((movie) => movie.id !== idToDelete))
+    );
+  }
 }

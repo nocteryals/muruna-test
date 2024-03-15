@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService, StorageService } from '@muruna-app/services';
-import { LANGUAGES, Movie } from '@muruna-app/shared';
+import { LANGUAGES, Movie, TableEmitter } from '@muruna-app/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { take, tap } from 'rxjs';
 
@@ -33,8 +33,8 @@ export class MainComponent implements OnInit {
 
   public async syncWithService(): Promise<void> {
     this.isLoading = true;
+    await this.httpService.syncMoviesAndSendToLocalStorage();
     setTimeout(async () => {
-      await this.httpService.syncMoviesAndSendToLocalStorage();
       this.dataSource = this.storageService.getFullMovies();
       this.isLoading = false;
     }, 3000);
@@ -44,5 +44,17 @@ export class MainComponent implements OnInit {
     this.translate.use(
       this.translate.currentLang === LANGUAGES.en ? LANGUAGES.es : LANGUAGES.en
     );
+  }
+
+  public processTableEmission(newTableEmission: TableEmitter): void {
+    if (newTableEmission.typeOfAction === 'delete') {
+      this.storageService.removeMovie(newTableEmission.movieTo.id);
+      this.loadMoviesFromStorage();
+    } else {
+    }
+  }
+
+  public createNewMovie(): void {
+    console.log('Start creation process');
   }
 }

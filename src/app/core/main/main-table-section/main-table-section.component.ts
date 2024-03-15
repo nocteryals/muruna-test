@@ -9,10 +9,20 @@ import { Movie, TableEmitter } from '@muruna-app/shared';
 export class MainTableSectionComponent {
   public displayedColumns: string[];
   @Input() public dataSource: Movie[];
-  @Output() eventName = new EventEmitter<TableEmitter>();
+  @Output() public eventEmitter = new EventEmitter<TableEmitter>();
 
   constructor() {
     this.displayedColumns = ['id', 'title', 'popularity', 'action'];
     this.dataSource = [];
+  }
+
+  public emitUserAction(
+    movieTo: Movie,
+    typeOfAction: 'delete' | 'update'
+  ): void {
+    this.eventEmitter.emit({
+      movieTo,
+      typeOfAction,
+    });
   }
 }

@@ -16,10 +16,19 @@
     >
       {{ "core.buttons.changeLanguage" | translate }}
     </button>
+    <button
+      class="main-page__buttons-section__add-new"
+      mat-stroked-button
+      color="primary"
+      (click)="createNewMovie()"
+    >
+      {{ "core.buttons.addNew" | translate }}
+    </button>
   </section>
   <muruna-main-table-section
     *ngIf="!isLoading"
     [dataSource]="dataSource"
+    (eventEmitter)="processTableEmission($event)"
   ></muruna-main-table-section>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
 </section>
