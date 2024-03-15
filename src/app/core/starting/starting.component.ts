@@ -13,6 +13,10 @@ export class StartingComponent {
 
   public async navigateToMainPage(): Promise<void> {
     await this.httpService.syncMoviesAndSendToLocalStorage();
-    this.router.navigate([CORE_ROUTING.DEFAULT + '/' + CORE_ROUTING.MAIN_PAGE]);
+    setTimeout(() => {
+      this.router.navigate([
+        CORE_ROUTING.DEFAULT + '/' + CORE_ROUTING.MAIN_PAGE,
+      ]);
+    }, 2000);
   }
 }
