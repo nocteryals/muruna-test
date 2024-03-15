@@ -1,0 +1,33 @@
+<section id="table-section" class="main-page__table-section">
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>{{
+        "core.table.nameOfColumn1" | translate
+      }}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef>{{
+        "core.table.nameOfColumn2" | translate
+      }}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.title }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="popularity">
+      <mat-header-cell *matHeaderCellDef>{{
+        "core.table.nameOfColumn3" | translate
+      }}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.popularity }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="action" stickyEnd>
+      <mat-header-cell *matHeaderCellDef aria-label="row actions">{{
+        "core.table.nameOfColumn4" | translate
+      }}</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-icon>edit</mat-icon>
+        <mat-icon>delete</mat-icon>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+</section>

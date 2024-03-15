@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpService } from '@muruna-app/services';
 import { CORE_ROUTING } from '@muruna-app/shared';
 
 @Component({
@@ -8,11 +9,10 @@ import { CORE_ROUTING } from '@muruna-app/shared';
   styleUrls: ['./starting.component.scss'],
 })
 export class StartingComponent {
-  constructor(
-    private router: Router
-  ) {}
+  constructor(private router: Router, private httpService: HttpService) {}
 
-  public navigateToMainPage(): void {
+  public async navigateToMainPage(): Promise<void> {
+    await this.httpService.syncMoviesAndSendToLocalStorage();
     this.router.navigate([CORE_ROUTING.DEFAULT + '/' + CORE_ROUTING.MAIN_PAGE]);
   }
 }

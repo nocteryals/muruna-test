@@ -1,6 +1,19 @@
-:host {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 3rem 2rem 3rem 2rem;
+.main-page {
+  position: relative;
+  &__buttons-section {
+    margin: 2rem 2rem 3rem 2rem;
+    &__sync-data {
+      margin-top: 1rem;
+      margin-right: 1rem;
+    }
+    &__change-language {
+      margin-top: 1rem;
+    }
+  }
+  mat-spinner {
+    position: relative;
+    margin-left: 50%;
+    margin-right: 50%;
+    transform: translateX(-50%);
+  }
 }

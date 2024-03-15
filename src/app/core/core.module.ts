@@ -10,9 +10,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { ServicesModule } from '@muruna-app/services';
+import { MainTableSectionComponent } from './main/main-table-section/main-table-section.component';
+import { MainCruSectionComponent } from './main/main-cru-section/main-cru-section.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-  declarations: [StartingComponent, MainComponent],
+  declarations: [
+    StartingComponent,
+    MainComponent,
+    MainTableSectionComponent,
+    MainCruSectionComponent,
+  ],
   imports: [
     CommonModule,
     CoreRoutingModule,
@@ -23,6 +33,9 @@ import { MatTableModule } from '@angular/material/table';
     TranslateModule,
     MatButtonModule,
     MatTableModule,
+    ServicesModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
   ],
 })
 export class CoreModule {}
